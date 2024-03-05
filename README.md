@@ -1,3 +1,100 @@
+# Carbook
+
+## Project Structure
+### Project Apps
+- profile app: This app contains model, views, serializers, tests and urls for profile
+- posts app: This app contains model, views, serializers, tests and urls for posts
+- comments app: This app contains model, views, serializers, tests and urls for comments
+- like app: This app contains model, views, serializers, tests and urls for like
+- followers app: This app contains model, views, serializers, tests and urls for followers
+
+### Django Apps
+- settings.py: This file contains configuration settings for your Django project, such as database settings, installed apps, and middleware.
+- Procfile: This file is used to specify the commands that should be executed when your Django app is deployed on a hosting platform.
+- requirements.txt: This file lists the dependencies required for the Django project to run.
+- env.py: This file is used to store environment variables for a Django project or application, such as database connection details or API keys.
+
+## User Stories
+
+### Profiles
+- As a developer, I can view lists of profiles so that I can see how many profiles have been created.
+- As a developer, I can view the details of a profile so that I can see individual profile data.
+- As a developer, I can update my profile so that I can change data when I want.
+- As a developer, I can delete a profile so that I can remove a profile that I don't want to continue with.
+
+### Posts
+- As a developer, I can view a list of all posts so that I can see all posts at once.
+- As a developer, I can view a single post so that I can view the detail of the post, including comment counts, interested_count, and join requests.
+- As a developer, I can create an post so that I can share information about upcoming posts.
+- As a developer, I can edit an post so that I can change the data with correct information.
+- As a developer, I can delete an post so that I can remove an post that is not valid or has been canceled.
+
+### Comments
+- As a developer, I can view a list of all comments so that I can see all comments for the posts.
+- As a developer, I can retrieve a comment by its id so that I can edit/delete the comment.
+- As a developer, I can add comments to posts so that I can interact with various people regarding an post.
+- As a developer, I can edit/update a comment so that I can change what I have commented.
+- As a developer, I can delete comments on posts so that I can delete unwanted comments or my written comments.
+
+### Like
+- As a developer, I can view the list of likes shown on posts so that I can see all the liked created in the API for the posts.
+- As a developer, I can retrieve likes by id so that I can make changes to it.
+- As a developer, I can add likes functionality for posts so that I can express interest in the post.
+- As a developer, I can delete likes functionality for an post so that I can remove my likes instance if not likes anymore.
+
+### Followers
+- As a developer, I can view a list of followers so that I can see who is following.
+- As a developer, I can retrieve followers by id so that I can make changes to them.
+- As a developer, I can create a follow so that I can follow another user.
+- As a developer, I can delete a follow so that I can unfollow another user.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome strasse34,
