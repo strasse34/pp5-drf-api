@@ -24,10 +24,10 @@
 
 ### Posts
 - As a developer, I can view a list of all posts so that I can see all posts at once.
-- As a developer, I can view a single post so that I can view the detail of the post, including comment counts, interested_count, and join requests.
-- As a developer, I can create an post so that I can share information about upcoming posts.
-- As a developer, I can edit an post so that I can change the data with correct information.
-- As a developer, I can delete an post so that I can remove an post that is not valid or has been canceled.
+- As a developer, I can view a single post so that I can view the detail of the post, including comment counts and likes count.
+- As a developer, I can create a post so that I can share information about upcoming posts.
+- As a developer, I can edit a post so that I can change the data with correct information.
+- As a developer, I can delete a post so that I can remove an post that is not valid or has been canceled.
 
 ### Comments
 - As a developer, I can view a list of all comments so that I can see all comments for the posts.
@@ -36,16 +36,17 @@
 - As a developer, I can edit/update a comment so that I can change what I have commented.
 - As a developer, I can delete comments on posts so that I can delete unwanted comments or my written comments.
 
-### Like
-- As a developer, I can view the list of likes shown on posts so that I can see all the liked created in the API for the posts.
+### Likes
+- As a developer, I can view the list of likes shown on posts so that I can see all the likes created in the API for the posts.
 - As a developer, I can retrieve likes by id so that I can make changes to it.
-- As a developer, I can add likes functionality for posts so that I can express interest in the post.
-- As a developer, I can delete likes functionality for an post so that I can remove my likes instance if not likes anymore.
+- As a developer, I can like a post so that I can express interest in the post.
+- As a developer, I can remove my like from a post, so that I can change my opinion about a post. 
+
 
 ### Followers
 - As a developer, I can view a list of followers so that I can see who is following.
 - As a developer, I can retrieve followers by id so that I can make changes to them.
-- As a developer, I can create a follow so that I can follow another user.
+- As a developer, I can make a follow so that I can follow another user.
 - As a developer, I can delete a follow so that I can unfollow another user.
 
 
