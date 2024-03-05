@@ -7,10 +7,10 @@ assignees: strasse34
 
 ---
 
-EPIC: Posts
+EPIC: Followers
 
 USER STORY: As a **role** I can **task** so that I can **benefit**
 
 ## Acceptance Criteria:
-- Criteria 1:
-- Criteria 2:
+1. 
+2.
