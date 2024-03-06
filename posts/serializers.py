@@ -30,6 +30,6 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
-            'car_company','car_model', 'car_product_year', 
+            'brand','model', 'production', 
             'other_details', 'my_experience', 'car_image', 
                 ]
