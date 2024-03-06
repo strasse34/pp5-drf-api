@@ -35,7 +35,7 @@ class Post(models.Model):
     brand = models.CharField(max_length=255, choices=CAR_BRAND_CHOICES, default='Toyota', blank=False)
     model = models.CharField(max_length=255, blank=False)
     production = models.IntegerField(choices=PRODUCTION_CHOICES, default=2024, blank=False, null=False)
-    other_details = models.CharField(max_length=255)
+    other_details = models.CharField(max_length=260)
     my_experience = models.TextField(blank=False)
     car_image = models.ImageField(upload_to='pp5/images/cars', blank=False)
 
