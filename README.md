@@ -1,11 +1,12 @@
-# Carbook
+# RideReview
 
 ## Project Structure
 ### Project Apps
-- profile app: This app contains model, views, serializers, tests and urls for profile
-- posts app: This app contains model, views, serializers, tests and urls for posts
-- comments app: This app contains model, views, serializers, tests and urls for comments
-- like app: This app contains model, views, serializers, tests and urls for like
+- profile app: This app contains model, views, serializers, and urls for profile
+- posts app: This app contains model, views, serializers, and urls for posts
+- comments app: This app contains model, views, serializers, and urls for comments
+- like app: This app contains model, views, serializers, and urls for like
+- rating app: This app contains model, views, serializers, and urls for rating
 - followers app: This app contains model, views, serializers, tests and urls for followers
 
 ### Django Apps
@@ -17,62 +18,38 @@
 ## User Stories
 
 ### Profiles
-- As a user, I can view lists of profiles so that I can see all the profiles have been created.
-    - The list is arranged chronologically, displaying the most recently created profiles first.
-    - Each profile entry includes essential information to provide a quick overview.
-- As a user, I can get each profile by id so that I can see individual profile data.
-    - Valid profile ID returns detailed profile info.
-    - Invalid ID prompts appropriate error message.
-- As a logged-in user, I can get my profile by id so that I can update my profile data when I want.
+- As a user, I can view lists of profiles so that I can see all the profiles have been created.  
+- As a user, I can get each profile by id so that I can see individual profile data. 
+- As a logged-in user, I can get my profile by id so that I can update my profile data when I want. 
 
 ### Posts
 - As a user, I can view a list of all posts so that I can see all posts have been posted.
-    - The list is arranged chronologically, displaying the most recently created posts first.
-    - Each post entry includes essential information to provide a quick overview.
 - As a user, I can get each post by id so that I can see individual post content.
-    - Valid profile ID returns post info.
-    - Invalid ID prompts appropriate error message.
 - As a logged-in user , I can create a post so that I can post it to be visible for other users.
-    - Post form is only visible for logged-in users.
-    - After creating a post, new post is visible in post list.
-- As a logged-in user, I can get my posts by id so that I can edit or delete them. 
-
+- As a logged-in user, I can get my posts by id so that I can edit or delete them.
 
 ### Comments
 - As a user, I can view a list of all comments so that I can see all comments have been created.
-    - The list is arranged chronologically, displaying the most recently created comments first.
-    - Each comment entry includes essential information to provide a quick overview.
 - As a user, I can get each comment by id so that I can see individual comment content.
-    - Valid profile ID returns comment info.
-    - Invalid ID prompts appropriate error message.
 - As a logged-in user, I can add comments to the posts so that I can interact with various people regarding a post.
-    - Comment form is only visible for logged-in users.
-    - After creating a comment, new comment is visible in comment list.
-- As a logged-in user, I can retrieve my comments by its id so that I can edit/delete the comment.
+- As a logged-in user, I can retrieve my comments by their id so that I can edit/delete the comment.
 
 ### Likes
 - As a user, I can view the list of likes so that I can see all the likes created in the API for the posts.
-    - The list is arranged chronologically, displaying the most recently created likes first.
-    - Each like entry includes essential information to provide a quick overview..
 - As a user, I can retrieve likes by id so that I can see individual like content.
-    - Valid profile ID returns like info.
-    - Invalid ID prompts appropriate error message.
 - As a logged-in user, I can like a post so that I can express interest in the post.
-    - Like form is only visible for logged-in users.
-    - After posting a like, new like is visible in like list.
-- As a logged-in user, I can remove my like from a post, so that I can change my opinion about a post. 
+- As a logged-in user, I can remove my like from a post, so that I can change my opinion about a post.
 
+### Ratings
+- As a user, I can view the list of ratings so that I can see all the ratings created in the API for the posts.
+- As a user, I can retrieve ratings by id so that I can see individual rating content.
+- As a logged-in user, I can rate a post so that I can express my opinion in the post.
+- As a logged-in user, I can remove my rating from a post, so that I can change my opinion about a post.
 
 ### Followers
 - As a user, I can view a list of followers so that I can see who is following whom.
-    - The list is arranged chronologically, displaying the most recently created followers first.
-    - Each follower entry includes essential information to provide a quick overview.
 - As a user, I can retrieve followers by id so that I can see individual follower content.
-    - Valid profile ID returns follower info.
-    - Invalid ID prompts appropriate error message.
-- As a logged-in user, I can make a follow so that I can follow my favorate user.
-    - Follow form is only visible for logged-in users.
-    - After following new user, new post is visible in post list.
+- As a logged-in user, I can make a follow so that I can follow my favorite user.
 - As a logged-in user, I can delete a follow so that I can unfollow a followed user.
 
 
