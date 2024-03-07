@@ -17,37 +17,63 @@
 ## User Stories
 
 ### Profiles
-- As a developer, I can view lists of profiles so that I can see how many profiles have been created.
-- As a developer, I can view the details of a profile so that I can see individual profile data.
-- As a developer, I can update my profile so that I can change data when I want.
-- As a developer, I can delete a profile so that I can remove a profile that I don't want to continue with.
+- As a user, I can view lists of profiles so that I can see all the profiles have been created.
+    - The list is arranged chronologically, displaying the most recently created profiles first.
+    - Each profile entry includes essential information to provide a quick overview.
+- As a user, I can get each profile by id so that I can see individual profile data.
+    - Valid profile ID returns detailed profile info.
+    - Invalid ID prompts appropriate error message.
+- As a logged-in user, I can get my profile by id so that I can update my profile data when I want.
 
 ### Posts
-- As a developer, I can view a list of all posts so that I can see all posts at once.
-- As a developer, I can view a single post so that I can view the detail of the post, including comment counts and likes count.
-- As a developer, I can create a post so that I can share information about upcoming posts.
-- As a developer, I can edit a post so that I can change the data with correct information.
-- As a developer, I can delete a post so that I can remove an post that is not valid or has been canceled.
+- As a user, I can view a list of all posts so that I can see all posts have been posted.
+    - The list is arranged chronologically, displaying the most recently created posts first.
+    - Each post entry includes essential information to provide a quick overview.
+- As a user, I can get each post by id so that I can see individual post content.
+    - Valid profile ID returns post info.
+    - Invalid ID prompts appropriate error message.
+- As a logged-in user , I can create a post so that I can post it to be visible for other users.
+    - Post form is only visible for logged-in users.
+    - After creating a post, new post is visible in post list.
+- As a logged-in user, I can get my posts by id so that I can edit or delete them. 
+
 
 ### Comments
-- As a developer, I can view a list of all comments so that I can see all comments for the posts.
-- As a developer, I can retrieve a comment by its id so that I can edit/delete the comment.
-- As a developer, I can add comments to posts so that I can interact with various people regarding an post.
-- As a developer, I can edit/update a comment so that I can change what I have commented.
-- As a developer, I can delete comments on posts so that I can delete unwanted comments or my written comments.
+- As a user, I can view a list of all comments so that I can see all comments have been created.
+    - The list is arranged chronologically, displaying the most recently created comments first.
+    - Each comment entry includes essential information to provide a quick overview.
+- As a user, I can get each comment by id so that I can see individual comment content.
+    - Valid profile ID returns comment info.
+    - Invalid ID prompts appropriate error message.
+- As a logged-in user, I can add comments to the posts so that I can interact with various people regarding a post.
+    - Comment form is only visible for logged-in users.
+    - After creating a comment, new comment is visible in comment list.
+- As a logged-in user, I can retrieve my comments by its id so that I can edit/delete the comment.
 
 ### Likes
-- As a developer, I can view the list of likes shown on posts so that I can see all the likes created in the API for the posts.
-- As a developer, I can retrieve likes by id so that I can make changes to it.
-- As a developer, I can like a post so that I can express interest in the post.
-- As a developer, I can remove my like from a post, so that I can change my opinion about a post. 
+- As a user, I can view the list of likes so that I can see all the likes created in the API for the posts.
+    - The list is arranged chronologically, displaying the most recently created likes first.
+    - Each like entry includes essential information to provide a quick overview..
+- As a user, I can retrieve likes by id so that I can see individual like content.
+    - Valid profile ID returns like info.
+    - Invalid ID prompts appropriate error message.
+- As a logged-in user, I can like a post so that I can express interest in the post.
+    - Like form is only visible for logged-in users.
+    - After posting a like, new like is visible in like list.
+- As a logged-in user, I can remove my like from a post, so that I can change my opinion about a post. 
 
 
 ### Followers
-- As a developer, I can view a list of followers so that I can see who is following.
-- As a developer, I can retrieve followers by id so that I can make changes to them.
-- As a developer, I can make a follow so that I can follow another user.
-- As a developer, I can delete a follow so that I can unfollow another user.
+- As a user, I can view a list of followers so that I can see who is following whom.
+    - The list is arranged chronologically, displaying the most recently created followers first.
+    - Each follower entry includes essential information to provide a quick overview.
+- As a user, I can retrieve followers by id so that I can see individual follower content.
+    - Valid profile ID returns follower info.
+    - Invalid ID prompts appropriate error message.
+- As a logged-in user, I can make a follow so that I can follow my favorate user.
+    - Follow form is only visible for logged-in users.
+    - After following new user, new post is visible in post list.
+- As a logged-in user, I can delete a follow so that I can unfollow a followed user.
 
 
 
@@ -204,7 +230,7 @@ rm .vscode/uptime.sh
 
 **Anything more?**
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software users, it will be great practice to see how these shell scripts work.
 
 ---
 
