@@ -7,7 +7,7 @@ assignees: strasse34
 
 ---
 
-EPIC: Followers
+EPIC: Profiles
 
 USER STORY: As a **role** I can **task** so that I can **benefit**
 
