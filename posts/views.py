@@ -1,3 +1,4 @@
+from django.db.models import Count, Avg
 from rest_framework import generics, permissions
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Post
@@ -11,7 +12,11 @@ class PostList(generics.ListCreateAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        comments_count=Count('owner__comment', distinct=True),
+        likes_count=Count('owner__like', distinct=True),               
+        ratings_average=Avg('ratings__stars'),               
+    ).order_by('-created_at')
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -23,4 +28,8 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Post.objects.all()
+    queryset = Post.objects.annotate(
+        comments_count=Count('owner__comment', distinct=True),
+        likes_count=Count('owner__like', distinct=True),
+        ratings_average=Avg('ratings__stars'),        
+    ).order_by('-created_at')

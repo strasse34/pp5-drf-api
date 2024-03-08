@@ -3,10 +3,12 @@ from django.db import IntegrityError
 from .models import Rating
 
 class RatingSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Rating
-        fields = ['owner', 'post', 'created_at', 'stars']
+        fields = ['id','owner', 'post', 'created_at','updated_at', 'stars']
         read_only_fields = ['owner', 'created_at']
+        
 
     def create(self, validated_data):
         user = self.context['request'].user
@@ -17,9 +19,10 @@ class RatingSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'detail': 'You have already rated this post.'})
 
 class RatingCreateSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Rating
-        fields = ['post', 'stars']
+        fields = ['id','owner', 'post', 'created_at','updated_at', 'stars']
 
     def create(self, validated_data):
         user = self.context['request'].user
