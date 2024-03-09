@@ -39,7 +39,7 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    # to round 
+    # to round rating average
     def get_ratings_average(self, obj):
         avg_rating = obj.ratings.aggregate(Avg('stars'))['stars__avg']
         return round(avg_rating, 1) if avg_rating is not None else None
