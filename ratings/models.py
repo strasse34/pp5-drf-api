@@ -20,7 +20,7 @@ class Rating(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    stars = models.PositiveIntegerField(choices=STAR_CHOICES)
+    stars = models.PositiveIntegerField(choices=STAR_CHOICES, default=0)
 
     class Meta:
         ordering = ['-created_at']

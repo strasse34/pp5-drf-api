@@ -39,6 +39,11 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
+    # to round 
+    def get_ratings_average(self, obj):
+        avg_rating = obj.ratings.aggregate(Avg('stars'))['stars__avg']
+        return round(avg_rating, 1) if avg_rating is not None else None
+    
     class Meta:
         model = Post
         fields = [
@@ -51,5 +56,6 @@ class PostSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['ratings_average'] = instance.ratings.aggregate(Avg('stars'))['stars__avg']
+        avg_rating = self.get_ratings_average(instance)
+        representation['ratings_average'] = f"{avg_rating:.1f}" if avg_rating is not None else None
         return representation
