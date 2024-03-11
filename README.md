@@ -20,19 +20,22 @@
 ### Profiles
 - As a user, I can view lists of profiles so that I can see all the profiles have been created.  
 - As a user, I can get each profile by id so that I can see individual profile data. 
-- As a logged-in user, I can get my profile by id so that I can update my profile data when I want. 
+- As a logged-in user, I can get my profile by id so that I can update my profile data when I want.
+- As a logged-in user, I can filter profiles so that I can list the profiles according to my wishes. 
 
 ### Posts
 - As a user, I can view a list of all posts so that I can see all posts have been posted.
 - As a user, I can get each post by id so that I can see individual post content.
 - As a logged-in user , I can create a post so that I can post it to be visible for other users.
 - As a logged-in user, I can get my posts by id so that I can edit or delete them.
+- As a logged-in user, I can filter/search posts so that I can list the posts according to my wishes.
 
 ### Comments
 - As a user, I can view a list of all comments so that I can see all comments have been created.
 - As a user, I can get each comment by id so that I can see individual comment content.
 - As a logged-in user, I can add comments to the posts so that I can interact with various people regarding a post.
 - As a logged-in user, I can retrieve my comments by their id so that I can edit/delete the comment.
+- As a logged-in user, I can filter/search comments so that I can list the comments according to my wishes.
 
 ### Likes
 - As a user, I can view the list of likes so that I can see all the likes created in the API for the posts.
