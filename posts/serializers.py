@@ -26,10 +26,12 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
+    # chcking if the authenticated user is the owner of a post.
     def get_is_owner(self, obj):
         request = self.context.get('request')
         return request.user == obj.owner
 
+    # checking if the authenticated user has liked a post and, if so, providing the id of that like.
     def get_like_id(self, obj):
         user = self.context.get('request').user
         if user.is_authenticated:

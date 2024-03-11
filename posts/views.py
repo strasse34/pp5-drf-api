@@ -14,8 +14,8 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
-        comments_count=Count('owner__comment', distinct=True),
-        likes_count=Count('owner__like', distinct=True),               
+        comments_count=Count('comment', distinct=True),
+        likes_count=Count('likes', distinct=True),               
         ratings_average=Avg('ratings__stars'),               
     ).order_by('-created_at')
 
@@ -58,7 +58,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(
-        comments_count=Count('owner__comment', distinct=True),
-        likes_count=Count('owner__like', distinct=True),
+        comments_count=Count('comment', distinct=True),
+        likes_count=Count('likes', distinct=True),
         ratings_average=Avg('ratings__stars'),        
     ).order_by('-created_at')
