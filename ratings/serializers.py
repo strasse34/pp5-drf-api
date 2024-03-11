@@ -24,12 +24,16 @@ class RatingCreateSerializer(serializers.ModelSerializer):
         model = Rating
         fields = ['id','owner', 'post', 'created_at','updated_at', 'stars']
 
-    def create(self, validated_data):
+    def validate(self, data):
         user = self.context['request'].user
-        post = validated_data['post']
+        post_owner = data['post'].owner
+
+        # Check if the user is the owner of the post
+        if user == post_owner:
+            raise serializers.ValidationError({'detail': 'You cannot rate your own post.'})
 
         # Check if the user has already rated the post
-        if Rating.objects.filter(owner=user, post=post).exists():
+        if Rating.objects.filter(owner=user, post=data['post']).exists():
             raise serializers.ValidationError({'detail': 'You have already rated this post.'})
 
-        return super().create({**validated_data, 'owner': user})
+        return data
