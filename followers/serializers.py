@@ -4,8 +4,7 @@ from .models import Follower
 
 class FollowerSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Follower model
-    Create method handles the unique constraint on 'owner' and 'followed'
+    Serializer for the Follower model    
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
@@ -29,7 +28,10 @@ class FollowerSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
+        """
+        Preventing duplicate following.
+        """
         try:
             return super().create(validated_data)
         except IntegrityError:
-            raise serializers.ValidationError({'detail': 'Possible duplicate'})
+            raise serializers.ValidationError({'detail': 'You have already followed this user!'})

@@ -5,7 +5,7 @@ from .serializers import RatingSerializer, RatingCreateSerializer
 
 class RatingList(generics.ListCreateAPIView):
     """
-    List ratings or create a rating if logged in.
+    List of ratings or create a rating if logged in.
     """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Rating.objects.all()

@@ -7,7 +7,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class CommentList(generics.ListCreateAPIView):
     """
-    List comments or create a comment if logged in.
+    List of comments or create a comment if logged in.
     """
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -18,8 +18,8 @@ class CommentList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
 
-    filterset_fields = [
-        #  filters the comments of a post.
+    #  filters the comments of a post.
+    filterset_fields = [        
         'post',              
     ]
 

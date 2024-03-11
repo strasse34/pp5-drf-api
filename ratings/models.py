@@ -5,7 +5,7 @@ from posts.models import Post
 
 class Rating(models.Model):
     """
-    Rating model, related to 'owner' and 'post'.
+    Rating model
     """
     STAR_CHOICES = [
         (1, '1 star'),
