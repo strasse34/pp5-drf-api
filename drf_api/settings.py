@@ -118,7 +118,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 CORS_ALLOW_CREDENTIALS = True
 
-ROOT_URLCONF = 'drf_api.urls'
+ROOT_URLCONF = 'pp5_drf_api.urls'
 
 TEMPLATES = [
     {
