@@ -49,7 +49,7 @@ JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'pp5_drf_api.serializers.CurrentUserSerializer'
+    'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'
 }
 
 # Quick-start development settings - unsuitable for production
@@ -118,7 +118,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 CORS_ALLOW_CREDENTIALS = True
 
-ROOT_URLCONF = 'pp5_drf_api.urls'
+ROOT_URLCONF = 'drf_api.urls'
 
 TEMPLATES = [
     {
@@ -136,7 +136,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pp5_drf_api.wsgi.application'
+WSGI_APPLICATION = 'drf_api.wsgi.application'
 
 
 # Database
