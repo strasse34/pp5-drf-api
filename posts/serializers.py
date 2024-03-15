@@ -16,7 +16,7 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     ratings_average = serializers.ReadOnlyField()
 
-    def validate_car_image(self, value):
+    def validate_image(self, value):
         """
         Validating images    
         """
@@ -65,7 +65,7 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'brand', 'model', 'production', 
-            'other_details', 'my_experience', 'car_image',
+            'other_details', 'my_experience', 'image',
             'like_id', 'comments_count', 'likes_count', 'ratings_average'
         ]
 
