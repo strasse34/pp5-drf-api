@@ -53,6 +53,7 @@ class PostList(generics.ListCreateAPIView):
         print(self.request.data)
         serializer.save(owner=self.request.user)
 
+    
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -65,3 +66,4 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         ratings_average=Avg('ratings__stars'),        
     ).order_by('-created_at')
+
