@@ -11,10 +11,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     brand = models.CharField(max_length=255, blank=False)
     model = models.CharField(max_length=255, blank=False)
-    production = models.IntegerField(blank=False, null=False)
-    other_details = models.CharField(max_length=260)
-    my_experience = models.TextField(blank=False)
-    image = models.ImageField(upload_to='pp5/images/cars', blank=False)
+   
 
     class Meta:
         ordering = ['-created_at']
