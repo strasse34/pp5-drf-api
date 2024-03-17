@@ -41,6 +41,7 @@ class PostList(generics.ListCreateAPIView):
         'brand',
         'model',
         'production',
+        'other_details'
     ]
     ordering_fields = [
         'likes_count',
