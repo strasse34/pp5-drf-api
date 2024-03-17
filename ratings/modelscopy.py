@@ -7,14 +7,20 @@ class Rating(models.Model):
     """
     Rating model
     """
-   
+    STAR_CHOICES = [
+        (1, '1 star'),
+        (2, '2 stars'),
+        (3, '3 stars'),
+        (4, '4 stars'),
+        (5, '5 stars'),
+    ]
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(
         Post, related_name='ratings', on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    stars = models.PositiveIntegerField(default=0)
+    stars = models.PositiveIntegerField(choices=STAR_CHOICES, default=0)
 
     class Meta:
         ordering = ['-created_at']
