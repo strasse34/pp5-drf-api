@@ -1,7 +1,7 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Comment
-
+from ratings.serializers import RatingSerializer  
 
 class CommentSerializer(serializers.ModelSerializer):
     """
@@ -13,6 +13,8 @@ class CommentSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+    stars = serializers.IntegerField(source='rating.stars', read_only=True)  
+    rating = RatingSerializer(source='rating', read_only=True) 
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -28,7 +30,7 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'post', 'created_at', 'updated_at', 'content'
+            'post', 'created_at', 'updated_at', 'content', 'stars', 'rating'
         ]
 
 

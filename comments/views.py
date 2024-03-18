@@ -23,6 +23,11 @@ class CommentList(generics.ListCreateAPIView):
         'post',              
     ]
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.select_related('rating')  # Ensure related 'rating' data is fetched
+        return queryset
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
