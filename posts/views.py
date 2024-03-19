@@ -1,4 +1,4 @@
-from django.db.models import Count, Avg
+from django.db.models import Count
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_api.permissions import IsOwnerOrReadOnly
@@ -8,37 +8,28 @@ from .serializers import PostSerializer
 
 class PostList(generics.ListCreateAPIView):
     """
-    List of posts or create a post if logged in    
+    List posts or create a post if logged in
+    The perform_create method associates the post with the logged in user.
     """
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
-        comments_count=Count('comment', distinct=True),
-        likes_count=Count('likes', distinct=True),               
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
-
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
-
     filterset_fields = [
-        # user feed: filter the posts that the user is following the profiles' owner. 
         'owner__followed__owner__profile',
-        # filter the posts that the user has liked.
         'likes__owner__profile',
-        # filter the user's posts.
         'owner__profile',
     ]
-
-    # posts are searchable by below fields:
     search_fields = [
         'owner__username',
-        'brand',
-        'model',
-        'production',
-        'other_details'
+        'title',
     ]
     ordering_fields = [
         'likes_count',
@@ -57,6 +48,6 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(
-        comments_count=Count('comment', distinct=True),
         likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')

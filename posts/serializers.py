@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
-from django.db.models import Avg
+from django.db.models import Avg, Count
+from comments.models import Comment  # Assuming the Comment model is imported from comments.models
 
 class PostSerializer(serializers.ModelSerializer):
     """
@@ -23,28 +24,22 @@ class PostSerializer(serializers.ModelSerializer):
         """
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')
-        if value.image.height > 4096:
+        if value.height > 4096:
             raise serializers.ValidationError(
                 'Image height larger than 4096px!'
             )
-        if value.image.width > 4096:
+        if value.width > 4096:
             raise serializers.ValidationError(
                 'Image width larger than 4096px!'
             )
         return value
 
     def get_is_owner(self, obj):
-        """
-        Checking if the authenticated user is the owner of a post.
-        """
-        request = self.context.get('request')
+        request = self.context['request']
         return request.user == obj.owner
 
     def get_like_id(self, obj):
-        """
-        Checking if the authenticated user has liked a post and, if so, providing the id of that like.
-        """
-        user = self.context.get('request').user
+        user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(
                 owner=user, post=obj
@@ -56,17 +51,13 @@ class PostSerializer(serializers.ModelSerializer):
         """
         Calculate the average rating for the post.
         """
-        comments = obj.comment_set.all()  # Assuming 'comment_set' is the related name for comments
-        if comments.exists():
-            return comments.aggregate(Avg('stars'))['stars__avg']
-        return None
+        return Comment.objects.filter(post=obj).aggregate(Avg('stars'))['stars__avg']
 
     def get_ratings_count(self, obj):
         """
         Get the count of ratings for the post.
         """
-        comments = obj.comment_set.all()  # Assuming 'comment_set' is the related name for comments
-        return comments.count()
+        return Comment.objects.filter(post=obj).count()
 
     class Meta:
         model = Post
