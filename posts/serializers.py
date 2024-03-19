@@ -14,7 +14,8 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
-    ratings_average = serializers.ReadOnlyField()
+    ratings_average = serializers.SerializerMethodField() 
+    ratings_count = serializers.SerializerMethodField()  
 
     def validate_image(self, value):
         """
@@ -32,17 +33,16 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
-    
     def get_is_owner(self, obj):
         """
-        chcking if the authenticated user is the owner of a post.
+        Checking if the authenticated user is the owner of a post.
         """
         request = self.context.get('request')
         return request.user == obj.owner
 
     def get_like_id(self, obj):
         """
-        checking if the authenticated user has liked a post and, if so, providing the id of that like.
+        Checking if the authenticated user has liked a post and, if so, providing the id of that like.
         """
         user = self.context.get('request').user
         if user.is_authenticated:
@@ -54,11 +54,20 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_ratings_average(self, obj):
         """
-        to round rating average
+        Calculate the average rating for the post.
         """
-        avg_rating = obj.ratings.aggregate(Avg('stars'))['stars__avg']
-        return round(avg_rating, 1) if avg_rating is not None else None
-    
+        comments = obj.comment_set.all()  # Assuming 'comment_set' is the related name for comments
+        if comments.exists():
+            return comments.aggregate(Avg('stars'))['stars__avg']
+        return None
+
+    def get_ratings_count(self, obj):
+        """
+        Get the count of ratings for the post.
+        """
+        comments = obj.comment_set.all()  # Assuming 'comment_set' is the related name for comments
+        return comments.count()
+
     class Meta:
         model = Post
         fields = [
@@ -66,14 +75,6 @@ class PostSerializer(serializers.ModelSerializer):
             'profile_image', 'created_at', 'updated_at',
             'brand', 'model', 'production', 
             'other_details', 'my_experience', 'image',
-            'like_id', 'comments_count', 'likes_count', 'ratings_average'
+            'like_id', 'likes_count','comments_count', 'ratings_count',  
+            'ratings_average'  
         ]
-
-    def to_representation(self, instance):
-        """
-        Customizing 'ratings_average' Field Representation
-        """
-        representation = super().to_representation(instance)
-        avg_rating = self.get_ratings_average(instance)
-        representation['ratings_average'] = f"{avg_rating:.1f}" if avg_rating is not None else None
-        return representation

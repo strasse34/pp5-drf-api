@@ -15,17 +15,14 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.annotate(
         comments_count=Count('comment', distinct=True),
         likes_count=Count('likes', distinct=True),               
-        ratings_average=Avg('ratings__stars'),               
     ).order_by('-created_at')
 
-    
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
 
-    
     filterset_fields = [
         # user feed: filter the posts that the user is following the profiles' owner. 
         'owner__followed__owner__profile',
@@ -47,14 +44,11 @@ class PostList(generics.ListCreateAPIView):
         'likes_count',
         'comments_count',
         'likes__created_at',
-        'ratings_average',
     ]
 
     def perform_create(self, serializer):
-        print(self.request.data)
         serializer.save(owner=self.request.user)
 
-    
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -65,6 +59,4 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.annotate(
         comments_count=Count('comment', distinct=True),
         likes_count=Count('likes', distinct=True),
-        ratings_average=Avg('ratings__stars'),        
     ).order_by('-created_at')
-

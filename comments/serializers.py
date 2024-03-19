@@ -1,7 +1,7 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
+
 from rest_framework import serializers
 from .models import Comment
-
 
 class CommentSerializer(serializers.ModelSerializer):
     """
@@ -13,7 +13,6 @@ class CommentSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
-    
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -25,11 +24,38 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
+    def validate(self, attrs):
+        """
+        Custom validation to ensure the user cannot comment/rate their own post,
+        cannot comment/rate multiple times on a single post, and must both comment and rate.
+        """
+        user = self.context['request'].user
+        post = attrs['post']
+
+        # Check if the user is the owner of the post
+        if post.owner == user:
+            raise serializers.ValidationError("You cannot comment/rate on your own post.")
+
+        # Check if both content and stars are provided
+        if 'content' not in attrs or 'stars' not in attrs:
+            raise serializers.ValidationError("You must provide both content and stars.")
+
+        # If it's an update, allow the operation
+        if self.instance:
+            return attrs
+
+        # Check if the user has already commented/rated on the post
+        existing_comment = Comment.objects.filter(owner=user, post=post).first()
+        if existing_comment:
+            raise serializers.ValidationError("You have already commented/rated on this post.")
+
+        return attrs
+
     class Meta:
         model = Comment
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'post', 'created_at', 'updated_at', 'content', 
+            'post', 'created_at', 'updated_at', 'content', 'stars', 
         ]
 
 

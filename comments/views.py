@@ -18,12 +18,8 @@ class CommentList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
 
-    #  filters the comments of a post.
-    filterset_fields = [        
-        'post',              
-    ]
-
-   
+    # Filters the comments by post.
+    filterset_fields = ['post']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -36,3 +32,11 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
+
+    def get_serializer_class(self):
+        """
+        Return the appropriate serializer class based on the request method.
+        """
+        if self.request.method == 'PUT' or self.request.method == 'PATCH':
+            return CommentSerializer
+        return CommentDetailSerializer
