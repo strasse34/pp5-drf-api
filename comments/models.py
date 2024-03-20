@@ -10,7 +10,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    content = models.TextField()
+    content = models.TextField(blank=False)
     stars = models.PositiveIntegerField(default=0)
     ratings_count = models.PositiveIntegerField(default=0)
 
