@@ -2,7 +2,7 @@ from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
 from django.db.models import Avg, Count
-from comments.models import Comment  # Assuming the Comment model is imported from comments.models
+from comments.models import Comment
 
 class PostSerializer(serializers.ModelSerializer):
     """
