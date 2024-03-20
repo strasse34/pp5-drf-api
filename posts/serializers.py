@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
-from django.db.models import Avg, Count
 from comments.models import Comment
+from django.db.models import Avg, Count
 
 class PostSerializer(serializers.ModelSerializer):
     """
@@ -15,8 +15,8 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
-    ratings_average = serializers.FloatField()
-    ratings_count = serializers.IntegerField()
+    ratings_average = serializers.SerializerMethodField()
+    ratings_count = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         """
@@ -35,29 +35,27 @@ class PostSerializer(serializers.ModelSerializer):
         return value
 
     def get_is_owner(self, obj):
-        request = self.context['request']
+        request = self.context.get('request')
         return request.user == obj.owner
 
     def get_like_id(self, obj):
-        user = self.context['request'].user
+        user = self.context.get('request').user
         if user.is_authenticated:
-            like = Like.objects.filter(
-                owner=user, post=obj
-            ).first()
+            like = Like.objects.filter(owner=user, post=obj).first()
             return like.id if like else None
         return None
 
     def get_ratings_average(self, obj):
         """
-        Get the average rating for the post from related comments.
+        Calculate the average rating for the post.
         """
-        return obj.comments.aggregate(Avg('stars'))['stars__avg'] or 0
+        return Comment.objects.filter(post=obj).aggregate(Avg('stars'))['stars__avg']
 
     def get_ratings_count(self, obj):
         """
-        Get the count of ratings for the post from related comments.
+        Get the count of ratings for the post.
         """
-        return obj.comments.count()
+        return Comment.objects.filter(post=obj).count()
 
     class Meta:
         model = Post
@@ -66,6 +64,5 @@ class PostSerializer(serializers.ModelSerializer):
             'profile_image', 'created_at', 'updated_at',
             'brand', 'model', 'production', 
             'other_details', 'my_experience', 'image',
-            'like_id', 'likes_count','comments_count', 'ratings_count',  
-            'ratings_average'  
+            'like_id', 'likes_count', 'comments_count', 'ratings_average', 'ratings_count' 
         ]

@@ -37,11 +37,13 @@ class CommentSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("You cannot comment/rate on your own post.")
 
         # Check if the user has already rated on the post
-        existing_comment = Comment.objects.filter(owner=user, post=post).first()
-        if existing_comment and existing_comment.stars > 0:
-            raise serializers.ValidationError("You have already rated this post.")
+        
 
-        return value
+        existing_comment = Comment.objects.filter(owner=user, post=post)
+        if existing_comment.exists():
+            raise serializers.ValidationError(
+                "Multiple comment/rating is not possible." 
+                "You can edit your last comment/rating.")
 
     class Meta:
         model = Comment

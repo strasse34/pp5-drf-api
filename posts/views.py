@@ -29,11 +29,15 @@ class PostList(generics.ListCreateAPIView):
     ]
     search_fields = [
         'owner__username',
-        'title',
+        'brand',
+        'model',
+        'production',
+        'other_details',
     ]
     ordering_fields = [
         'likes_count',
         'comments_count',
+        'ratings_average',
         'likes__created_at',
     ]
 
