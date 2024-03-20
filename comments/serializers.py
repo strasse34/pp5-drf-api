@@ -1,5 +1,4 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
-
 from rest_framework import serializers
 from .models import Comment
 
@@ -26,8 +25,9 @@ class CommentSerializer(serializers.ModelSerializer):
 
     def validate(self, value):
         """
-        Custom validation to ensure the user cannot comment/rate their own post,
-        cannot comment/rate multiple times on a single post, and must both comment and rate.
+        Custom validation to ensure the user cannot comment/rate his own post,
+        cannot rate multiple times on a single post, but can comment multiple times
+        on other users' posts.
         """
         user = self.context['request'].user
         post = value['post']
@@ -36,18 +36,10 @@ class CommentSerializer(serializers.ModelSerializer):
         if post.owner == user:
             raise serializers.ValidationError("You cannot comment/rate on your own post.")
 
-        # Check if both content and stars are provided
-        if 'content' not in value or 'stars' not in value:
-            raise serializers.ValidationError("You must provide both content and stars.")
-
-        # If it's an update, allow the operation
-        if self.instance:
-            return value
-
-        # Check if the user has already commented/rated on the post
+        # Check if the user has already rated on the post
         existing_comment = Comment.objects.filter(owner=user, post=post).first()
-        if existing_comment:
-            raise serializers.ValidationError("You have already commented/rated on this post.")
+        if existing_comment and existing_comment.stars > 0:
+            raise serializers.ValidationError("You have already rated this post.")
 
         return value
 
