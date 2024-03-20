@@ -45,6 +45,8 @@ class CommentSerializer(serializers.ModelSerializer):
                 "Multiple comment/rating is not possible." 
                 "You can edit your last comment/rating.")
 
+        return value
+
     class Meta:
         model = Comment
         fields = [
