@@ -24,32 +24,32 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
-    def validate(self, attrs):
+    def validate(self, value):
         """
         Custom validation to ensure the user cannot comment/rate their own post,
         cannot comment/rate multiple times on a single post, and must both comment and rate.
         """
         user = self.context['request'].user
-        post = attrs['post']
+        post = value['post']
 
         # Check if the user is the owner of the post
         if post.owner == user:
             raise serializers.ValidationError("You cannot comment/rate on your own post.")
 
         # Check if both content and stars are provided
-        if 'content' not in attrs or 'stars' not in attrs:
+        if 'content' not in value or 'stars' not in value:
             raise serializers.ValidationError("You must provide both content and stars.")
 
         # If it's an update, allow the operation
         if self.instance:
-            return attrs
+            return value
 
         # Check if the user has already commented/rated on the post
         existing_comment = Comment.objects.filter(owner=user, post=post).first()
         if existing_comment:
             raise serializers.ValidationError("You have already commented/rated on this post.")
 
-        return attrs
+        return value
 
     class Meta:
         model = Comment
