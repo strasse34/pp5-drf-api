@@ -15,7 +15,11 @@ class Post(models.Model):
     production = models.IntegerField(blank=False, null=False)
     other_details = models.CharField(max_length=260)
     my_experience = models.TextField(blank=False)
-    image = models.ImageField(upload_to='pp5/images/cars', default='../default_post_rgq6aq', blank=False)
+    image = models.ImageField(
+        upload_to='pp5/images/cars', 
+        default='../default_post_rgq6aq', 
+        blank=False
+        )
     
 
     class Meta:

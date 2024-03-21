@@ -24,11 +24,6 @@ class CommentSerializer(serializers.ModelSerializer):
         return naturaltime(obj.updated_at)
 
     def validate(self, value):
-        """
-        Custom validation to ensure the user cannot comment/rate his own post,
-        cannot rate multiple times on a single post, but can comment multiple times
-        on other users' posts.
-        """
         user = self.context['request'].user
         post = value['post']
 
@@ -36,9 +31,12 @@ class CommentSerializer(serializers.ModelSerializer):
         if post.owner == user:
             raise serializers.ValidationError("You cannot comment/rate on your own post.")
 
-        # Check if the user has already rated on the post
-        
+        # If the instance being validated is an existing instance (updating a comment),
+        # skip the validation
+        if self.instance:
+            return value
 
+        # Check if the user has already rated on the post
         existing_comment = Comment.objects.filter(owner=user, post=post)
         if existing_comment.exists():
             raise serializers.ValidationError(
