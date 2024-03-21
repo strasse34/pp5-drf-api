@@ -15,7 +15,7 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
-    ratings_average = serializers.SerializerMethodField(default=0)    
+    ratings_average = serializers.SerializerMethodField()    
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -45,7 +45,8 @@ class PostSerializer(serializers.ModelSerializer):
         """
         Calculate the average rating for the post.
         """
-        return Comment.objects.filter(post=obj).aggregate(Avg('stars'))['stars__avg']
+        average_rating = Comment.objects.filter(post=obj).aggregate(Avg('stars'))['stars__avg']
+        return average_rating if average_rating is not None else 0
 
     
     class Meta:
