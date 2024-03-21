@@ -13,8 +13,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.TextField(max_length=1000, blank=False, default='comment')
-    stars = models.PositiveIntegerField(default=0)
-    ratings_count = models.PositiveIntegerField(default=0)
+    stars = models.PositiveIntegerField(default=0)    
     ratings_average = models.FloatField(default=0)  
 
     class Meta:
@@ -24,14 +23,7 @@ class Comment(models.Model):
         return self.content
 
     def save(self, *args, **kwargs):
-    # Calculate rating count whenever a new rating is added or modified
-        if self.pk:  # Check if the comment is being updated
-            old_stars = Comment.objects.get(pk=self.pk).stars
-            self.ratings_count += 1 if self.stars > 0 and old_stars == 0 else 0
-            self.ratings_count -= 1 if self.stars == 0 and old_stars > 0 else 0
-        else:  # New comment
-            self.ratings_count = 1 if self.stars > 0 else 0
-
+    
         # Calculate ratings_average
         total_stars = self.post.comment_set.aggregate(models.Sum('stars'))['stars__sum']
         if total_stars is not None and self.ratings_count > 0:
