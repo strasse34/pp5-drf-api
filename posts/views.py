@@ -4,6 +4,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Post
 from .serializers import PostSerializer
+from django.db.models import Avg
+
 
 
 class PostList(generics.ListCreateAPIView):
@@ -15,7 +17,8 @@ class PostList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        comments_count=Count('comment', distinct=True),
+        ratings_average=Avg('comment__stars'),
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
