@@ -4,9 +4,6 @@ from followers.models import Follower
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the profile model    
-    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
@@ -19,14 +16,12 @@ class ProfileSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_following_id(self, obj):
-        """
-        Retrieving following id    
-        """
         user = self.context['request'].user
         if user.is_authenticated:
             following = Follower.objects.filter(
                 owner=user, followed=obj.owner
-            ).first()            
+            ).first()
+            # print(following)
             return following.id if following else None
         return None
 
@@ -34,6 +29,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'name',
-          'image', 'is_owner', 'following_id',
+            'content', 'image', 'is_owner', 'following_id',
             'posts_count', 'followers_count', 'following_count',
         ]
