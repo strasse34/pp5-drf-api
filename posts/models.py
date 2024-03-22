@@ -16,9 +16,8 @@ class Post(models.Model):
     other_details = models.CharField(max_length=260)
     my_experience = models.TextField(blank=False)
     image = models.ImageField(
-        upload_to='pp5/images/cars', 
-        default='../default_post_rgq6aq', 
-        blank=False
+        upload_to='pp5/images/cars',         
+        blank=False,
         )
     
 
