@@ -22,9 +22,7 @@ class Comment(models.Model):
     def __str__(self):
         return self.content
 
-    def save(self, *args, **kwargs):
-        # Get the total number of comments for the post
-        total_comments = self.post.comment_set.count()
+    def save(self, *args, **kwargs):        
 
         # Calculate total stars for all comments of the post
         total_stars = self.post.comment_set.aggregate(models.Sum('stars'))['stars__sum']
