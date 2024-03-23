@@ -6,14 +6,7 @@
 - posts app: This app contains model, views, serializers, and urls for posts
 - comments app: This app contains model, views, serializers, and urls for comments
 - like app: This app contains model, views, serializers, and urls for like
-- rating app: This app contains model, views, serializers, and urls for rating
 - followers app: This app contains model, views, serializers, tests and urls for followers
-
-### Django Apps
-- settings.py: This file contains configuration settings for your Django project, such as database settings, installed apps, and middleware.
-- Procfile: This file is used to specify the commands that should be executed when your Django app is deployed on a hosting platform.
-- requirements.txt: This file lists the dependencies required for the Django project to run.
-- env.py: This file is used to store environment variables for a Django project or application, such as database connection details or API keys.
 
 ## User Stories
 
@@ -43,175 +36,326 @@
 - As a logged-in user, I can like a post so that I can express interest in the post.
 - As a logged-in user, I can remove my like from a post, so that I can change my opinion about a post.
 
-### Ratings
-- As a user, I can view the list of ratings so that I can see all the ratings created in the API for the posts.
-- As a user, I can retrieve ratings by id so that I can see individual rating content.
-- As a logged-in user, I can rate a post so that I can express my opinion in the post.
-- As a logged-in user, I can remove my rating from a post, so that I can change my opinion about a post.
-
 ### Followers
 - As a user, I can view a list of followers so that I can see who is following whom.
 - As a user, I can retrieve followers by id so that I can see individual follower content.
 - As a logged-in user, I can make a follow so that I can follow my favorite user.
 - As a logged-in user, I can delete a follow so that I can unfollow a followed user.
 
+## Technologies Used
 
+### Languages & Frameworks
 
-defaul car image source: https://clipart-library.com/clipart/6ir5kXA5T.htm
+- Python 3.10.2
+- Django
+- Django Rest Framework
 
+### Libraries & Tools
 
+- [Cloudinary](https://cloudinary.com/) to store images for profile and events
+- [CI Python Linter](https://pep8ci.herokuapp.com/) was used for validation of python files.
+- [Lucidcharts](https://lucid.app/) has been used in project to design and document data model architecture.
+- [CodeAnyWhere](https://app.codeanywhere.com/) was IDE used for writing code and to push the code to GitHub
+- [GitHub](https://github.com/) was used as a remote repository to store project code
+- [Heroku](https://heroku.com) - Cloud platform. Justification: I used this was used to deploy the project into live environment
+- [Django REST Framework](https://www.django-rest-framework.org/) - API toolkit. Justification: I used this to build the back-end API
+- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/index.html) - API Module. Justification: I used this for user authentication
+- [Psycopg2](https://www.psycopg.org/docs/) - PostgreSQL database adaptor. Justification: This was used as a PostgreSQL database adapter for Python
+- [ElephantSQL](https://www.elephantsql.com/) - Database hosting service – Justification: This was used as the deployed project on Heroku uses an ElephantSQL database
 
+### All libraries for deployment in Heroku
 
+- All libraries is stored in requirements.txt for deployment in heroku
 
+<details><summary>All libraries</summary>
+<img src="images/requirements.png">
+</details>
 
+## Agile design
 
+### User Story Template
 
+- Using Github issues first I created the template for a user story that was later used to create user stories. I created four labels: must have, could have, should have.
 
+<details><summary>See User story template</summary>
+<img src="images/user-story-template.png">
+</details>
 
 
 
+### Kanban Board
 
+- As a visual representation of the project's status, showing what tasks are to be done, in progress and completed.Each task is represented as a card on the board, and the cards can be moved from one column to another to show progress.
 
+[Link to project Kanban board.](https://github.com/users/Sinha5714/projects/6)
 
+<details><summary>See Kanban board</summary>
+<img src="images/kanban.png">
+</details>
 
+### Moscow Prioritisation
 
+- The Moscow prioritization technique is used to prioritize project requirements based on their importance.
 
+<details><summary>See Image</summary>
+<img src="images/moscow.png">
+</details>
 
+### Milestones
 
+- Milestones are created with a aim of finishing a task on a certain date. I have created 7 milestones for this project and linked them with issues related.
 
+<details><summary>See Image</summary>
+<img src="images/milestones.png">
+</details>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome strasse34,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
-
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software users, it will be great practice to see how these shell scripts work.
+## Database Design
 
 ---
 
-Happy coding!
+<details><summary>(ERD)Physical database model</summary>
+<img src="images/database-diagram.png">
+</details>
+
+- This sample ERD diagram was made using [Lucid Charts](https://www.lucidchart.com)
+- For this Django app I have used PostgreSQL relational database management system.
+- model showed on the diagram visually represents the structure of a PostgreSQL database, including tables, columns, relationships, and constraints, that is stored in the database itself.
+
+### Data Models
+
+#### User Model
+
+- User model as part of the Django Rest Framework dj-rest-auth library contains basic information about authenticated user and contains folowing fields:
+  Username, Password, Email
+
+
+  #### Profile Model
+ 
+
+- The Profile model is created to store additional information about users for better interaction with the website.
+
+| Name       | Database Key | Field Type    | Validation                                      |
+| ---------- | ------------ | ------------- | ----------------------------------------------- |
+| owner      | owner        | OneToOneField | User, on_delete=models.CASCADE                  |
+| created_at | created_at   | DateTimeField | auto_now_add=True                               |
+| updated_at | updated_at   | DateTimeField | auto_now=True                                   |
+| name       | name         | CharField     | max_length=255, blank=True                      |
+| content    | content      | TextField     | blank=True                                      |
+| image      | image        | ImageField    | upload_to='pp5/images/profile', default='../scpevcha1fo1rxmc3f2o' |
+
+
+#### Post Model
+The Post model is created to store information about posts made by users.
+
+| Name           | Database Key | Field Type    | Validation                                      |
+| -------------- | ------------ | ------------- | ----------------------------------------------- |
+| owner          | owner        | ForeignKey    | User, on_delete=models.CASCADE                  |
+| created_at     | created_at   | DateTimeField | auto_now_add=True                               |
+| updated_at     | updated_at   | DateTimeField | auto_now=True                                   |
+| brand          | brand        | CharField     | max_length=255, blank=False                     |
+| model          | model        | CharField     | max_length=255, blank=False                     |
+| production     | production   | IntegerField  | blank=False, null=False                         |
+| other_details  | other_details| CharField     | max_length=260                                  |
+| my_experience  | my_experience| TextField     | blank=False                                     |
+| image          | image        | ImageField    | upload_to='pp5/images/cars', blank=False        |
+
+
+#### Comment Model
+
+
+The Comment model is created to store information about comments made by users on posts. The ratings_average field in the Comment model represents the average rating which is calculated based on the stars field provided by users for comments on the same post. 
+
+| Name            | Database Key   | Field Type    | Validation                                      |
+| --------------- | -------------- | ------------- | ----------------------------------------------- |
+| owner           | owner          | ForeignKey    | User, on_delete=models.CASCADE                  |
+| post            | post           | ForeignKey    | Post, on_delete=models.CASCADE                  |
+| created_at      | created_at     | DateTimeField | auto_now_add=True                               |
+| updated_at      | updated_at     | DateTimeField | auto_now=True                                   |
+| content         | content        | TextField     | max_length=1000, blank=False, default='comment' |
+| stars           | stars          | PositiveIntegerField | default=0                                  |
+| ratings_average | ratings_average| FloatField    | default=0                                       |
+
+#### Like Model
+
+The Like model is designed to represent likes made by users on posts.
+
+| Name       | Database Key | Field Type | Validation                         |
+| ---------- | ------------ | ---------- | ---------------------------------- |
+| owner      | owner        | ForeignKey | User, on_delete=models.CASCADE    |
+| post       | post         | ForeignKey | Post, related_name='likes', on_delete=models.CASCADE |
+| created_at | created_at   | DateTimeField | auto_now_add=True                 |
+
+#### Follower Model
+
+The Follower model represents the relationship between users who follow each other.
+
+| Name       | Database Key | Field Type | Validation                               |
+| ---------- | ------------ | ---------- | ---------------------------------------- |
+| owner      | owner        | ForeignKey | User, related_name='following', on_delete=models.CASCADE |
+| followed   | followed     | ForeignKey | User, related_name='followed', on_delete=models.CASCADE |
+| created_at | created_at   | DateTimeField | auto_now_add=True                       |
+
+## Features
+
+### Home Page
+
+- This is the welcoming page for all users
+- Once user opens the API site, this page appears in front of him.
+
+<details><summary>See API Site Homepage</summary>
+
+![API Site Homepage](images/rout.png)
+
+</details>
+
+
+### Profile List Page
+
+- This page consists of profile list of all users
+- **User Story Covered**: 1
+
+<details><summary>See Profile List Page</summary>
+
+![Profile List Page](images/profile-list.png)
+
+</details>
+
+### Profile Detail Page
+
+- This page consists of profile detail page
+- If user is owner he can edit and delete his profile
+- **User Story Covered**: 2, 3, 4
+
+<details><summary>See Profile Detail Page</summary>
+
+![Profile Detail Page](images/profile-details.png)
+
+</details>
+
+<details><summary>See Profile Owner Detail Page</summary>
+
+![Profile Owner Detail Page](images/profile-owner-page.png)
+
+</details>
+
+### Post List Page
+
+- This page consists of event list of all posts which have been created
+- This page also consist a post create form for logged in user
+
+
+<details><summary>See Post List Page</summary>
+
+![Post List Page](images/postlist.png)
+
+</details>
+
+<details><summary>See Post List - Create Form </summary>
+
+![Post List - Create Form](images/posts-list.png)
+
+</details>
+
+### Post Detail Page
+
+- This page consists of post detail
+- If user is owner he can edit and delete his post what he has created
+
+
+<details><summary>See Post Detail Page</summary>
+
+![Post Detail Page](images/post-detail.png)
+
+</details>
+<details><summary>See Post Create Form</summary>
+
+![Post Create Form](images/post-create-from.png)
+
+</details>
+
+<details><summary>See Post Owner Edit Form</summary>
+
+![Post Owner Edit Form](images/post-owner-page.png)
+
+</details>
+
+### Comments List Page
+
+- This page consists of comments list of all comments posted for posts
+- This page also consist a comment create form for logged in user with post options
+
+
+<details><summary>See Comments List Page</summary>
+
+![Comments List Page](images/comment-list.png)
+
+</details>
+
+<details><summary>See Comments Create Form </summary>
+
+![Comments Create Form](images/comment-create-form.png)
+
+</details>
+
+### Comment Detail Page
+
+- This page consists of comment detail
+- If user is owner he can edit and delete his comments what he has posted
+
+
+<details><summary>See Comment Detail Page with Edit form</summary>
+
+![Comment Detail Page](images/comment-detail.png)
+
+</details>
+
+### Likes List Page
+
+- This page consists of likes list for a post
+- This page also consist a like create form for logged in user with post options
+- If user want to like again a validation error is thrown
+
+
+<details><summary>See likes list Page with Create Form</summary>
+
+![likes List Page with Create Form](images/likes-list.png)
+
+</details>
+
+
+### like Detail Page
+
+- This page consists of like detail
+- If can delete his like
+
+<details><summary>See like Detail Page</summary>
+
+![like Detail Page](images/like-detail.png)
+
+</details>
+
+### Followers List Page
+
+- This page consists of followers list of all user following each other
+- This page also consist a followers create form for logged in user with other users options
+- If user want to follow a followed user again a validation error is thrown
+
+
+<details><summary>See Follower List Page with Create Form</summary>
+
+![Follower List Page with Create Form](images/followers-list.png)
+
+</details>
+
+### Followers Detail Page
+
+- This page consists of followers detail
+- If user has followed another user he can delete his follow
+
+<details><summary>See Followers Detail Page</summary>
+
+![Follow Detail Page](images/follower-detail.png)
+
+</details>
+
