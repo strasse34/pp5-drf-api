@@ -15,7 +15,7 @@ class CommentSerializer(serializers.ModelSerializer):
     updated_at = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
-        request = self.context['request']
+        request = self.context.get('request')
         return request.user == obj.owner
 
     def get_created_at(self, obj):
@@ -24,30 +24,30 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
-    def validate(self, value):
-        user = self.context['request'].user
-        post = value.get('post')
+    def validate(self, data):
+        request = self.context.get('request')
+        if not request:
+            raise serializers.ValidationError("Request object not found in context.")
 
-        if post:
-            # Check if the user is the owner of the post
-            if post.owner == user:
-                raise serializers.ValidationError(
-                    "You cannot comment/rate on your own post."
-                    )
+        user = request.user
+        post = data.get('post')
+        content = data.get('content')
+        stars = data.get('stars')
 
-            # If the instance being validated is an existing instance,
-            # skip the validation
-            if self.instance:
-                return value
+        if post.owner == user:
+            raise serializers.ValidationError("You cannot comment/rate on your own post.")
 
-            # Check if the user has already rated on the post
-            existing_comment = Comment.objects.filter(owner=user, post=post)
-            if existing_comment.exists():
-                raise serializers.ValidationError(
-                    "Multiple comment/rating is not possible."
-                    "You can edit your last comment/rating.")
+        existing_comment = Comment.objects.filter(owner=user, post=post)
+        if existing_comment.exists():
+            raise serializers.ValidationError("Multiple comments/ratings are not allowed. You can edit your last comment/rating.")
 
-        return value
+        if not content:
+            raise serializers.ValidationError("Content is required for comment.")
+
+        if stars is None:
+            raise serializers.ValidationError("Stars are required for rating.")
+
+        return data
 
     class Meta:
         model = Comment
