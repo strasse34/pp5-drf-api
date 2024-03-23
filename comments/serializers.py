@@ -24,30 +24,30 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
 
-    # def validate(self, value):
-    #     user = self.context['request'].user
-    #     post = value.get('post')
+    def validate(self, value):
+        user = self.context['request'].user
+        post = value.get('post')
 
-    #     if post:
-    #         # Check if the user is the owner of the post
-    #         if post.owner == user:
-    #             raise serializers.ValidationError(
-    #                 "You cannot comment/rate on your own post."
-    #                 )
+        if post:
+            # Check if the user is the owner of the post
+            if post.owner == user:
+                raise serializers.ValidationError(
+                    "You cannot comment/rate on your own post."
+                    )
 
-    #         # If the instance being validated is an existing instance,
-    #         # skip the validation
-    #         if self.instance:
-    #             return value
+            # If the instance being validated is an existing instance,
+            # skip the validation
+            if self.instance:
+                return value
 
-    #         # Check if the user has already rated on the post
-    #         existing_comment = Comment.objects.filter(owner=user, post=post)
-    #         if existing_comment.exists():
-    #             raise serializers.ValidationError(
-    #                 "Multiple comment/rating is not possible."
-    #                 "You can edit your last comment/rating.")
+            # Check if the user has already rated on the post
+            existing_comment = Comment.objects.filter(owner=user, post=post)
+            if existing_comment.exists():
+                raise serializers.ValidationError(
+                    "Multiple comment/rating is not possible."
+                    "You can edit your last comment/rating.")
 
-    #     return value
+        return value
 
     class Meta:
         model = Comment
