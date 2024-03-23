@@ -369,173 +369,204 @@ The Follower model represents the relationship between users who follow each oth
 #### drf_api Project
 
 <details><summary>Views</summary>
-<img src="images/python-test/pp5-views.png" >
+<img src="images/python-validation/drf-view.png" >
 </details>
 
 <details><summary>Urls</summary>
-<img src="images/python-test/pp5-urls.png" >
+<img src="images/python-validation/drf-url.png" >
 </details>
 
 <details><summary>Serializers</summary>
-<img src="images/python-test/pp5-serializers.png" >
+<img src="images/python-validation/drf-serializer.png" >
 </details>
 
 <details><summary>Permissions</summary>
-<img src="images/python-test/pp5-permissions.png" >
+<img src="images/python-validation/drf-permission.png" >
 </details>
 
 ##### Profiles App
 
 <details><summary>Models</summary>
-<img src="images/python-test/profile-model.png" >
+<img src="images/python-validation/profile-model.png" >
 </details>
 
 <details><summary>Views</summary>
-<img src="images/python-test/profile-views.png" >
-</details>
-
-<details><summary>Admin</summary>
-<img src="images/python-test/profile-admin.png" >
+<img src="images/python-validation/profile-view.png" >
 </details>
 
 <details><summary>Serializers</summary>
-<img src="images/python-test/profile-serializers.png" >
+<img src="images/python-validation/profile-serializer.png" >
 </details>
 
 <details><summary>Urls</summary>
-<img src="images/python-test/profile-urls.png" >
+<img src="images/python-validation/profile-rul.png" >
 </details>
 
-<details><summary>Tests</summary>
-<img src="images/python-test/profile-tests.png" >
-</details>
-
-##### Events App
+##### Post App
 
 <details><summary>Models</summary>
-<img src="images/python-test/events-model.png" >
+<img src="images/python-validation/post-model.png" >
 </details>
 
 <details><summary>Views</summary>
-<img src="images/python-test/events-views.png" >
-</details>
-
-<details><summary>Admin</summary>
-<img src="images/python-test/events-admin.png" >
+<img src="images/python-validation/post-view.png" >
 </details>
 
 <details><summary>Serializers</summary>
-<img src="images/python-test/events-serializers.png" >
+<img src="images/python-validation/post-serializer.png" >
 </details>
 
 <details><summary>Urls</summary>
-<img src="images/python-test/events-urls.png" >
-</details>
-
-<details><summary>Tests</summary>
-<img src="images/python-test/events-tests.png" >
+<img src="images/python-validation/post-url.png" >
 </details>
 
 ##### Comments App
 
 <details><summary>Models</summary>
-<img src="images/python-test/comment-model.png" >
+<img src="images/python-validation/comment-model.png" >
 </details>
 
 <details><summary>Views</summary>
-<img src="images/python-test/comment-views.png" >
-</details>
-
-<details><summary>Admin</summary>
-<img src="images/python-test/comment-admin.png" >
+<img src="images/python-validation/comment-view.png" >
 </details>
 
 <details><summary>Serializers</summary>
-<img src="images/python-test/comment-serializers.png" >
+<img src="images/python-validation/comment-serializer.png" >
 </details>
 
 <details><summary>Urls</summary>
-<img src="images/python-test/comment-url.png" >
+<img src="images/python-validation/comment-url.png" >
 </details>
 
-<details><summary>Tests</summary>
-<img src="images/python-test/comment-tests.png" >
-</details>
-
-##### Interested App
+##### Likes App
 
 <details><summary>Models</summary>
-<img src="images/python-test/interested-model.png" >
+<img src="images/python-validation/like-model.png" >
 </details>
 
 <details><summary>Views</summary>
-<img src="images/python-test/interested-views.png" >
-</details>
-
-<details><summary>Admin</summary>
-<img src="images/python-test/interested-admin.png" >
+<img src="images/python-validation/like-view.png" >
 </details>
 
 <details><summary>Serializers</summary>
-<img src="images/python-test/interested-serializers.png" >
+<img src="images/python-validation/like-serializer.png" >
 </details>
 
 <details><summary>Urls</summary>
-<img src="images/python-test/interested-urls.png" >
-</details>
-
-<details><summary>Tests</summary>
-<img src="images/python-test/interested-tests.png" >
-</details>
-
-##### Join App
-
-<details><summary>Models</summary>
-<img src="images/python-test/join-model.png" >
-</details>
-
-<details><summary>Views</summary>
-<img src="images/python-test/join-views.png" >
-</details>
-
-<details><summary>Admin</summary>
-<img src="images/python-test/join-admin.png" >
-</details>
-
-<details><summary>Serializers</summary>
-<img src="images/python-test/join-serializers.png" >
-</details>
-
-<details><summary>Urls</summary>
-<img src="images/python-test/join-urls.png" >
-</details>
-
-<details><summary>Tests</summary>
-<img src="images/python-test/join-tests.png" >
+<img src="images/python-validation/like-url.png" >
 </details>
 
 ##### Followers App
 
 <details><summary>Models</summary>
-<img src="images/python-test/followers-models.png" >
+<img src="images/python-validation/follower-model.png" >
 </details>
 
 <details><summary>Views</summary>
-<img src="images/python-test/followers-views.png" >
-</details>
-
-<details><summary>Admin</summary>
-<img src="images/python-test/followers-admin.png" >
+<img src="images/python-validation/follower-view.png" >
 </details>
 
 <details><summary>Serializers</summary>
-<img src="images/python-test/followers-serializers.png" >
+<img src="images/python-validation/follower-serializer.png" >
 </details>
 
 <details><summary>Urls</summary>
-<img src="images/python-test/followers-urls.png" >
+<img src="images/python-validation/follower-url.png" >
 </details>
 
-<details><summary>Tests</summary>
-<img src="images/python-test/followers-tests.png" >
-</details>
+## Testing
+
+- Testing of the website can be [seen here]()
+
+## Deployment
+
+### Creating Database using ElephantSQL
+
+1. To generate a managed PostgreSQL database, please proceed to [ElephantSQL](https://customer.elephantsql.com/) and either sign up or sign in to your account. Once you've logged in, click on the 'Create New Instance' button.
+
+2. Name your database and select the 'Tiny Turtle' payment plan. Then, click on 'Select Region'
+
+3. Select your preferred region and create the database instance.
+
+- After creating the instance, navigate to the instances page and click on the name of the database you selected earlier. Then, in the details section on the following page, copy the PostgreSQL URL.
+
+### Deploying the website in Heroko
+
+- Before deploying in Heroku following files were created:
+  1. env.py : stores confidential data eg. API keys, passwords etc.
+
+2. Procfile : Very important for deployment and must be added with capital P
+
+3. Requirements.txt: This must be updated for deployment in Heroku. It stores data of libraries used for project
+
+- The website was deployed to Heroko using following steps:
+
+#### Login or create an account at Heroku
+
+- Make an account in Heroko and login
+
+#### Creating an app
+
+- Create new app in the top right of the screen and add an app name.
+- Select region
+- Then click "create app".
+
+#### Open settings Tab
+
+##### Click on config var
+
+- Store CLOUDINARY_URL file from in key and add the values
+- Store DATABASE_URL file from in key and add the values
+- Store SECRET_KEY file from in key and add the values
+- Store ALLOWED_HOST in key and add the value
+- Store DISABLE_COLLECTSTATIC in key and add the value
+
+##### Add Buildpacks
+
+- Add python buildpack first
+- Add Nodejs buildpack after that
+
+#### Open Deploy Tab
+
+##### Choose deployment method
+
+- Connect GITHUB
+- Login if prompted
+
+##### Connect to Github
+
+- Choose repositories you want to connect
+- Click "Connect"
+
+
+##### Automatic and Manual deploy
+
+- Choose a method to deploy
+- After Deploy is clicked it will install various file
+
+##### Deployment
+
+- Project is deployed in Heroku and click on view app to proceed to deployed url
+
+
+### Forking the GitHub Repository
+
+1. Go to the GitHub repository
+2. Click on Fork button in top right corner
+3. You will then have a copy of the repository in your own GitHub account.
+4. [GitHub Repository](https://github.com/strasse34/pp5-drf-api)
+
+### Cloning the repository in GitHub
+
+1. Visit the GitHub page of the website's repository
+2. Click the “Clone” button on top of the page
+3. Click on “HTTPS”
+4. Click on the copy button next to the link to copy it
+5. Open your IDE
+6. Type `git clone <copied URL>` into the terminal
+
+## Credits
+
+### Code
+
+- The code was written with the help of Code Institute walkthrough project [drf-api](https://github.com/Code-Institute-Solutions/drf-api)
