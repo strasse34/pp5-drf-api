@@ -162,8 +162,6 @@ This repository contains the API set up using Django REST Framework for the Ride
 
 - As a visual representation of the project's status, showing what tasks are to be done, in progress and completed.Each task is represented as a card on the board, and the cards can be moved from one column to another to show progress.
 
-[Link to project Kanban board.](https://github.com/users/Sinha5714/projects/6)
-
 <details><summary>See Kanban board</summary>
 <img src="images/kanban.png">
 </details>
@@ -178,7 +176,7 @@ This repository contains the API set up using Django REST Framework for the Ride
 
 ### Milestones
 
-- Milestones are created with a aim of finishing a task on a certain date. I have created 7 milestones for this project and linked them with issues related.
+- Milestones are created with a aim of finishing a task on a certain date. I have created 5 milestones for this project and linked them with issues related.
 
 <details><summary>See Image</summary>
 <img src="images/milestones.png">
@@ -288,7 +286,6 @@ The Follower model represents the relationship between users who follow each oth
 ### Profile List Page
 
 - This page consists of profile list of all users
-- **User Story Covered**: 1
 
 <details><summary>See Profile List Page</summary>
 
@@ -300,7 +297,6 @@ The Follower model represents the relationship between users who follow each oth
 
 - This page consists of profile detail page
 - If user is owner he can edit and delete his profile
-- **User Story Covered**: 2, 3, 4
 
 <details><summary>See Profile Detail Page</summary>
 
