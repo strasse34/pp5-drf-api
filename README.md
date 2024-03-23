@@ -366,7 +366,7 @@ The Follower model represents the relationship between users who follow each oth
 - [CI Python Linter](https://pep8ci.herokuapp.com/) was used for validation of python files.
 - NOTE: The validation was done to all custom python files written by me. Settings.py and env.py was excluded because it contains important data which is longer than 79 lines and cannot be changed.
 
-#### pp5_api Project
+#### drf_api Project
 
 <details><summary>Views</summary>
 <img src="images/python-test/pp5-views.png" >
