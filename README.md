@@ -1,4 +1,79 @@
+
 # RideReview
+
+**Developer: Reza Mirzaie**
+
+💻 [Live link](https://rr-drf-api-d27ae746a106.herokuapp.com/)
+
+This repository contains the API set up using Django REST Framework for the Ride Review front-end application
+
+## Table of Contents
+
+- [Project Structure](#project-structure)
+  - [Project Apps](#project-apps)
+- [User Stories](#user-stories)
+  - [Profiles](#profiles)
+  - [Posts](#posts)
+  - [Comments](#comments)
+  - [Likes](#likes)
+  - [Followers](#followers)
+- [Technologies Used](#technologies-used)
+  - [Languages & Frameworks](#languages--frameworks)
+  - [Libraries & Tools](#libraries--tools)
+  - [All libraries for deployment in Heroku](#all-libraries-for-deployment-in-heroku)
+- [Agile design](#agile-design)
+  - [User Story Template](#user-story-template)
+  - [Kanban Board](#kanban-board)
+  - [Moscow Prioritisation](#moscow-prioritisation)
+  - [Milestones](#milestones)
+- [Database Design](#database-design)
+  - [Data Models](#data-models)
+    - [User Model](#user-model)
+    - [Profile Model](#profile-model)
+    - [Post Model](#post-model)
+    - [Comment Model](#comment-model)
+    - [Like Model](#like-model)
+    - [Follower Model](#follower-model)
+- [Features](#features)
+  - [Home Page](#home-page)
+  - [Profile List Page](#profile-list-page)
+  - [Profile Detail Page](#profile-detail-page)
+  - [Post List Page](#post-list-page)
+  - [Post Detail Page](#post-detail-page)
+  - [Comments List Page](#comments-list-page)
+  - [Comment Detail Page](#comment-detail-page)
+  - [Likes List Page](#likes-list-page)
+  - [Like Detail Page](#like-detail-page)
+  - [Followers List Page](#followers-list-page)
+  - [Followers Detail Page](#followers-detail-page)
+- [Validation](#validation)
+  - [Python](#python)
+    - [drf_api Project](#drf_api-project)
+    - [Profiles App](#profiles-app)
+    - [Post App](#post-app)
+    - [Comments App](#comments-app)
+    - [Likes App](#likes-app)
+    - [Followers App](#followers-app)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  - [Creating Database using ElephantSQL](#creating-database-using-elephantsql)
+  - [Deploying the website in Heroku](#deploying-the-website-in-heroku)
+    - [Login or create an account at Heroku](#login-or-create-an-account-at-heroku)
+    - [Creating an app](#creating-an-app)
+    - [Open settings Tab](#open-settings-tab)
+      - [Click on config var](#click-on-config-var)
+      - [Add Buildpacks](#add-buildpacks)
+    - [Open Deploy Tab](#open-deploy-tab)
+      - [Choose deployment method](#choose-deployment-method)
+      - [Connect to Github](#connect-to-github)
+      - [Automatic and Manual deploy](#automatic-and-manual-deploy)
+      - [Deployment](#deployment-1)
+    - [Forking the GitHub Repository](#forking-the-github-repository)
+    - [Cloning the repository in GitHub](#cloning-the-repository-in-github)
+- [Credits](#credits)
+  - [Code](#code)
+
+
 
 ## Project Structure
 ### Project Apps
@@ -247,13 +322,13 @@ The Follower model represents the relationship between users who follow each oth
 
 <details><summary>See Post List Page</summary>
 
-![Post List Page](images/postlist.png)
+![Post List Page](images/posts-list.png)
 
 </details>
 
-<details><summary>See Post List - Create Form </summary>
+<details><summary>See Post Create Form </summary>
 
-![Post List - Create Form](images/posts-list.png)
+![Post Create Form](images/post-create-from.png)
 
 </details>
 
@@ -266,11 +341,6 @@ The Follower model represents the relationship between users who follow each oth
 <details><summary>See Post Detail Page</summary>
 
 ![Post Detail Page](images/post-detail.png)
-
-</details>
-<details><summary>See Post Create Form</summary>
-
-![Post Create Form](images/post-create-from.png)
 
 </details>
 
@@ -327,7 +397,7 @@ The Follower model represents the relationship between users who follow each oth
 ### like Detail Page
 
 - This page consists of like detail
-- If can delete his like
+- User can delete his like
 
 <details><summary>See like Detail Page</summary>
 
@@ -476,7 +546,7 @@ The Follower model represents the relationship between users who follow each oth
 
 ## Testing
 
-- Testing of the website can be [seen here]()
+- Testing of the website can be [seen here](https://github.com/strasse34/pp5-drf-api/blob/main/TESTING.md)
 
 ## Deployment
 
@@ -546,7 +616,7 @@ The Follower model represents the relationship between users who follow each oth
 
 ##### Deployment
 
-- Project is deployed in Heroku and click on view app to proceed to deployed url
+- Project was deployed in Heroku
 
 
 ### Forking the GitHub Repository
