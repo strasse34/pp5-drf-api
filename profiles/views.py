@@ -25,7 +25,7 @@ class ProfileList(generics.ListAPIView):
         #  filters the profiles that user is following.
         'owner__following__followed__profile',
         #  filters the profiles who are following the user.
-        'owner__followed__owner__profile',       
+        'owner__followed__owner__profile',
     ]
     ordering_fields = [
         'posts_count',

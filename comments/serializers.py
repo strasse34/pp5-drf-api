@@ -2,9 +2,10 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Comment
 
+
 class CommentSerializer(serializers.ModelSerializer):
     """
-    Serializer for the Comment model    
+    Serializer for the Comment model
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -25,14 +26,16 @@ class CommentSerializer(serializers.ModelSerializer):
 
     def validate(self, value):
         user = self.context['request'].user
-        post = value.get('post')  
+        post = value.get('post')
 
         if post:
             # Check if the user is the owner of the post
             if post.owner == user:
-                raise serializers.ValidationError("You cannot comment/rate on your own post.")
+                raise serializers.ValidationError(
+                    "You cannot comment/rate on your own post."
+                    )
 
-            # If the instance being validated is an existing instance (updating a comment),
+            # If the instance being validated is an existing instance,
             # skip the validation
             if self.instance:
                 return value
@@ -41,22 +44,21 @@ class CommentSerializer(serializers.ModelSerializer):
             existing_comment = Comment.objects.filter(owner=user, post=post)
             if existing_comment.exists():
                 raise serializers.ValidationError(
-                    "Multiple comment/rating is not possible." 
+                    "Multiple comment/rating is not possible."
                     "You can edit your last comment/rating.")
 
         return value
-
 
     class Meta:
         model = Comment
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'post', 'created_at', 'updated_at', 'content', 'stars', 
+            'post', 'created_at', 'updated_at', 'content', 'stars',
         ]
 
 
 class CommentDetailSerializer(CommentSerializer):
     """
-    Serializer for the Comment model used in Detail view    
+    Serializer for the Comment model used in Detail view
     """
     post = serializers.ReadOnlyField(source='post.id')

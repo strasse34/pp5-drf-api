@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
 from decimal import Decimal
+from django.db.models import Count
 
 
 class Comment(models.Model):
@@ -13,8 +14,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     content = models.TextField(max_length=1000, blank=False, default='comment')
-    stars = models.PositiveIntegerField(default=0)    
-    ratings_average = models.FloatField(default=0)  
+    stars = models.PositiveIntegerField(default=0)
+    ratings_average = models.FloatField(default=0)
 
     class Meta:
         ordering = ['-created_at']
@@ -22,10 +23,15 @@ class Comment(models.Model):
     def __str__(self):
         return self.content
 
-    def save(self, *args, **kwargs):        
+    def save(self, *args, **kwargs):
 
-        # Calculate total stars for all comments of the post
-        total_stars = self.post.comment_set.aggregate(models.Sum('stars'))['stars__sum']
+    # Calculate total stars for all comments of the post
+        total_stars = self.post.comment_set.aggregate(models.Sum('stars'))[
+            'stars__sum'
+        ]
+
+        # Calculate total number of comments for the post
+        total_comments = self.post.comment_set.count()
 
         # Calculate ratings_average
         if total_stars is not None and total_comments > 0:
@@ -36,3 +42,4 @@ class Comment(models.Model):
             self.ratings_average = 0
 
         super().save(*args, **kwargs)
+

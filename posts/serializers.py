@@ -4,9 +4,10 @@ from likes.models import Like
 from comments.models import Comment
 from django.db.models import Avg, Count
 
+
 class PostSerializer(serializers.ModelSerializer):
     """
-    Serializer for the post model    
+    Serializer for the post model
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -15,7 +16,7 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
-    ratings_average = serializers.SerializerMethodField()    
+    ratings_average = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -45,10 +46,10 @@ class PostSerializer(serializers.ModelSerializer):
         """
         Calculate the average rating for the post.
         """
-        average_rating = Comment.objects.filter(post=obj).aggregate(Avg('stars'))['stars__avg']
+        comments = Comment.objects.filter(post=obj)
+        average_rating = comments.aggregate(Avg('stars'))['stars__avg']
         return average_rating if average_rating is not None else 0
 
-    
     class Meta:
         model = Post
         fields = [
