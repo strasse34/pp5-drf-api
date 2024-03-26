@@ -72,6 +72,7 @@ This repository contains the API set up using Django REST Framework for the Ride
     - [Cloning the repository in GitHub](#cloning-the-repository-in-github)
 - [Credits](#credits)
   - [Code](#code)
+- [Thank You](#thank-you)
 
 
 
@@ -116,6 +117,11 @@ This repository contains the API set up using Django REST Framework for the Ride
 - As a user, I can retrieve followers by id so that I can see individual follower content.
 - As a logged-in user, I can make a follow so that I can follow my favorite user.
 - As a logged-in user, I can delete a follow so that I can unfollow a followed user.
+
+## Front End
+
+### React JS
+This API is used to manage Back-End and database for the Front-End application which has built by React JS. The repository with a README file for the Front-End can be found [here](https://github.com/strasse34/pp5).
 
 ## Technologies Used
 
@@ -636,3 +642,9 @@ The Follower model represents the relationship between users who follow each oth
 ### Code
 
 - The code was written with the help of Code Institute walkthrough project [drf-api](https://github.com/Code-Institute-Solutions/drf-api)
+
+
+## Thank You
+
+- To Code Institute, tutur team and Slack community for helping me when I was getting stuck with some challenges.
+- Special thanks to my wife and lovely daughter for their support during the past month in completing my PP5 project.

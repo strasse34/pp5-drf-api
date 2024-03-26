@@ -7,7 +7,11 @@ from .settings import (
 
 
 @api_view()
+    
 def root_route(request):
+    """
+    View for the root route of the API.
+    """
     return Response({
         "message": "Welcome to my drf API!"
     })
@@ -15,6 +19,9 @@ def root_route(request):
 
 @api_view(['POST'])
 def logout_route(request):
+    """
+     View for logging out the user.
+    """
     response = Response()
     response.set_cookie(
         key=JWT_AUTH_COOKIE,
